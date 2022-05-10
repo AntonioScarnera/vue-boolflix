@@ -1,6 +1,6 @@
 <template>
   <div>
-      <search-bar-comp  />
+      <search-bar-comp />
       <div>
           <ul>
               <li v-for="film in filmList" :key="film.id">
@@ -37,9 +37,9 @@ export default {
         },
         filteredFilmList(){
             
-            if(this.searchText === '') return this.characterList;
+            if(this.searchText === '') return this.filmList;
 
-            return this.characterList.filter((element)=>element.original_title === this.searchText)
+            return this.filmList.filter((element)=>element.original_title === this.searchText)
         }
     },
     methods:{
