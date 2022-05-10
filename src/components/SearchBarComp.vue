@@ -24,7 +24,6 @@ export default {
         submit(){
             store.setSearch(this.inputText)
             console.log(this.inputText)
-            this.inputText = ''
         },
     }
 }

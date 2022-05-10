@@ -1,6 +1,6 @@
 <template>
   <div>
-      <search-bar-comp @/>
+      <search-bar-comp  />
       <div>
           <ul>
               <li v-for="film in filmList" :key="film.id">
