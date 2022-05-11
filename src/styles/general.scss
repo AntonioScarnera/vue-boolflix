@@ -1,6 +1,20 @@
 
 @import "~bootstrap/scss/bootstrap.scss";
 
+
+$fa-font-path: './webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
+
+@import './vars.scss';
+
 body{
-    font-family: Arial;
+    font-family: $main-font;
+    height: 100vh;
+}
+
+.mycontainer{
+    width: 95%;
+    margin: 0 auto;
 }

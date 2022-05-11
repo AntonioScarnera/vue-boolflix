@@ -1,8 +1,6 @@
 <template>
     <section>
-        <input type="text" placeholder="Search" v-model="search" @keyup.enter="cerca">
-
-        <button @click="cerca">Cerca</button>
+        <input type="text" placeholder="Search Movie or Series" v-model="search" @keyup.enter="cerca" size="20px" >
     </section>
 </template>
 
@@ -25,12 +23,11 @@ export default {
     methods:{
         cerca(){
             this.$emit('performSearch', this.search)
-            this.search = '';
         }
     }
 }
 </script>
 
 <style lang="scss">
-
+    
 </style>

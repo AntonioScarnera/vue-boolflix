@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <header>
-      <h1 class="display-6">Boolflix</h1>
-      <search-bar @performSearch="search"/>
+      <div class="mycontainer d-flex align-items-center justify-content-between h-100"> 
+        <h1 class="display-6">Boolflix</h1>
+        <search-bar @performSearch="search"/>
+      </div>
     </header>
+
     <main>
-      <grid-list :items="movies" :loader="loading"/>
+      <grid-list :items="movies" title="Movie" :loader="loadingMovie"/>
+      <grid-list :items="series" title="Series" :loader="loadingSeries"/>
     </main>
   </div>
 </template>
@@ -26,7 +30,9 @@ export default {
       apiKey: '4c813c61fbf2d72e7a32cdfde861e711',
       apiPath: 'https://api.themoviedb.org/3/search/',
       movies: [],
-      loading: false
+      series:[],
+      loadingMovie: false,
+      loadingSeries: false
     }
   },
   computed:{
@@ -38,7 +44,17 @@ export default {
         console.log(res.data.results)
         this.movies = res.data.results;
         console.log(this.movies)
-        this.loading = false
+        this.loadingMovie = false
+      }).catch((err)=>{
+        console.log('Error', err);
+      })
+    },
+    getSeries(parameters){
+      axios.get(this.apiPath + 'tv', parameters).then((res)=>{
+        console.log(res.data.results)
+        this.series = res.data.results;
+        console.log(this.series)
+        this.loadingSeries = false
       }).catch((err)=>{
         console.log('Error', err);
       })
@@ -51,8 +67,10 @@ export default {
           language: 'it-IT'
         }
       }
-      this.loading = true;
-      this.getMovies(paramsObj)
+      this.loadingMovie = true;
+      this.loadingSeries = true;
+      this.getMovies(paramsObj);
+      this.getSeries(paramsObj);
     }
   }
 
@@ -62,5 +80,16 @@ export default {
 <style lang="scss">
 
 @import './styles/general.scss';
+
+header{
+  height: 100px;
+  background-color: $black;
+  div{
+    h1{
+      color: $red;
+      margin-bottom: 0;
+    }
+  }
+}
 
 </style>

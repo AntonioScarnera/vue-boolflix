@@ -1,22 +1,23 @@
 <template>
   <section>
-      <ul>
-        <li v-for="item in items" :key="item.id">
-          Film ID: {{item.id}} <br> 
-          Original Title: {{item.original_title}} <br> 
-          Title: {{item.title}} <br> 
-          Language: {{item.original_language}} <br> 
-          Vote: {{item.vote_average}}
-        </li>
-      </ul>
+      <h2>{{title}}</h2>
+      <div v-for="item in items" :key="item.id">
+          <card-comp :element="item"/>
+      </div>
   </section>
 </template>
 
 <script>
 //import state from '../store.js'
+
+import CardComp from './CardComp.vue'
 export default {
     name: 'GridList',
-    props:['items','loader'],
+    components:{
+      CardComp
+      
+    },
+    props:['items','loader','title'],
     data(){
         return{
 
