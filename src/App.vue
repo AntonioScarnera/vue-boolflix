@@ -1,31 +1,20 @@
 <template>
   <div id="app">
-
-    <header>
-
-    </header>
-
-    <main>
-      <grid-comp/>
-    </main>
+    <h1 class="text-center display-6">Boolflix</h1>
   </div>
 </template>
 
 <script>
-import GridComp from './components/GridComp.vue'
-
-
 
 
 export default {
   name: 'App',
   components: {
-    GridComp,
+
   }
 }
 </script>
 
-
 <style lang="scss">
-
+@import './styles/general.scss'
 </style>
