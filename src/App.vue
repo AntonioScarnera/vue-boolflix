@@ -8,8 +8,8 @@
     </header>
 
     <main>
-      <grid-list :items="movies" title="Movie" :loader="loadingMovie"/>
-      <grid-list :items="series" title="Series" :loader="loadingSeries"/>
+      <grid-list :items="movies" title="Movie" :loader="loadingMovie" :titleStatus="titleStatus" class="mycontainer"/>
+      <grid-list :items="series" title="Series" :loader="loadingSeries" :titleStatus="titleStatus" class="mycontainer"/>
     </main>
   </div>
 </template>
@@ -32,7 +32,8 @@ export default {
       movies: [],
       series:[],
       loadingMovie: false,
-      loadingSeries: false
+      loadingSeries: false,
+      titleStatus: false
     }
   },
   computed:{
@@ -45,6 +46,7 @@ export default {
         this.movies = res.data.results;
         console.log(this.movies)
         this.loadingMovie = false
+        this.titleStatus = true
       }).catch((err)=>{
         console.log('Error', err);
       })
@@ -55,6 +57,7 @@ export default {
         this.series = res.data.results;
         console.log(this.series)
         this.loadingSeries = false
+        this.titleStatus = true
       }).catch((err)=>{
         console.log('Error', err);
       })
@@ -91,5 +94,23 @@ header{
     }
   }
 }
+
+
+</style>
+
+<style>
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {        
+  box-shadow: inset 0 0 0 10px;
+}
+
 
 </style>
